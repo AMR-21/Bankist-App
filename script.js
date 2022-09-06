@@ -51,10 +51,13 @@ const usernameInp = document.querySelector('.login-username');
 const pinInp = document.querySelector('.login-pin');
 const transferToInp = document.querySelector('.op-transfer-to');
 const transferAmtInp = document.querySelector('.op-transfer-amount');
+const closeUserInp = document.querySelector('.op-close-user');
+const closePinInp = document.querySelector('.op-close-pin');
 
 // Buttons
 const loginBtn = document.querySelector('.login-btn');
 const transferBtn = document.querySelector('.op-transfer-btn');
+const closeBtn = document.querySelector('.op-close-btn');
 const sortBtn = document.querySelector('.btn-sort');
 
 // App variables
@@ -155,8 +158,8 @@ loginBtn.addEventListener('click', function (evt) {
 });
 
 // Transfer functionality
-transferBtn.addEventListener('click', function (evt) {
-  evt.preventDefault();
+transferBtn.addEventListener('click', function (e) {
+  e.preventDefault();
 
   const user = accounts.find(acc => acc.username === transferToInp.value);
   const amount = Number(transferAmtInp.value);
@@ -174,6 +177,24 @@ transferBtn.addEventListener('click', function (evt) {
     currentAccount.movements.push(-amount);
     updateUI();
   }
+});
+
+// Close functionality
+
+closeBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    closeUserInp.value === currentAccount.username &&
+    Number(closePinInp.value) === currentAccount.pin
+  ) {
+    accounts.splice(
+      accounts.findIndex(acc => acc.username === currentAccount.username),
+      1
+    );
+    welcomeLabel.textContent = `Log in to get started`;
+    appDiv.style.opacity = 0;
+  }
+  closeUserInp.value = closePinInp.value = '';
 });
 
 currentAccount = account1;

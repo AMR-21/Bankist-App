@@ -112,3 +112,6 @@ function checkDogs(dogsJulia, dogsKate) {
 
 // find Loops over array and retrieve first element from the array that satisfies the condition
 console.log(movements.find(mov => mov < 0)); // -400
+
+console.log(movements.findIndex(val => val === 3000)); // 3
+// findIndex returns the index of element if exists and -1 if not
