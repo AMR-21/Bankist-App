@@ -51,17 +51,20 @@ const usernameInp = document.querySelector('.login-username');
 const pinInp = document.querySelector('.login-pin');
 const transferToInp = document.querySelector('.op-transfer-to');
 const transferAmtInp = document.querySelector('.op-transfer-amount');
+const loanAmtInp = document.querySelector('.op-loan-amount');
 const closeUserInp = document.querySelector('.op-close-user');
 const closePinInp = document.querySelector('.op-close-pin');
 
 // Buttons
 const loginBtn = document.querySelector('.login-btn');
 const transferBtn = document.querySelector('.op-transfer-btn');
+const loanBtn = document.querySelector('.op-loan-btn');
 const closeBtn = document.querySelector('.op-close-btn');
 const sortBtn = document.querySelector('.btn-sort');
 
 // App variables
 let currentAccount;
+let sorted = false;
 
 // //////////////////////////////////////////////////////////////////////////
 
@@ -72,8 +75,11 @@ let currentAccount;
 const displayMovements = function (acc = currentAccount) {
   movementsDiv.innerHTML = '';
   const movsFrag = document.createDocumentFragment();
+  const movements = sorted
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
-  acc.movements.forEach((mov, i) => {
+  movements.forEach((mov, i) => {
     const moveEl = document.createElement('div');
     const direction = mov > 0 ? 'deposit' : 'withdrawal';
 
@@ -89,7 +95,11 @@ const displayMovements = function (acc = currentAccount) {
   movementsDiv.appendChild(movsFrag);
 };
 
-sortBtn.addEventListener('click', function () {});
+sortBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  sorted = !sorted;
+  displayMovements();
+});
 
 // Balance
 
@@ -158,6 +168,7 @@ loginBtn.addEventListener('click', function (evt) {
 });
 
 // Transfer functionality
+
 transferBtn.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -166,6 +177,7 @@ transferBtn.addEventListener('click', function (e) {
   transferToInp.value = transferAmtInp.value = '';
   transferAmtInp.blur();
   transferToInp.blur();
+  transferBtn.blur();
 
   if (
     user &&
@@ -177,6 +189,24 @@ transferBtn.addEventListener('click', function (e) {
     currentAccount.movements.push(-amount);
     updateUI();
   }
+});
+
+//  Loan functionality
+
+loanBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  const request = Number(loanAmtInp.value);
+
+  if (
+    request > 0 &&
+    currentAccount.movements.some(mov => mov >= request * 0.1)
+  ) {
+    currentAccount.movements.push(request);
+    updateUI();
+  }
+  loanAmtInp.value = '';
+  loanAmtInp.blur();
+  loanBtn.blur();
 });
 
 // Close functionality
@@ -195,6 +225,7 @@ closeBtn.addEventListener('click', function (e) {
     appDiv.style.opacity = 0;
   }
   closeUserInp.value = closePinInp.value = '';
+  closeBtn.blur();
 });
 
 currentAccount = account1;
