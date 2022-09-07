@@ -86,67 +86,107 @@ movements.forEach(function (movement, index, array) {});
 
 // console.log(balance); // 3840
 
-// ! Coding Challenge 1
-function checkDogs(dogsJulia, dogsKate) {
-  const corDogsJulia = dogsJulia.slice(1, -2);
-  const dogs = [...corDogsJulia, ...dogsKate];
+// // ! Coding Challenge 1
+// function checkDogs(dogsJulia, dogsKate) {
+//   const corDogsJulia = dogsJulia.slice(1, -2);
+//   const dogs = [...corDogsJulia, ...dogsKate];
 
-  dogs.forEach((dog, index) =>
-    console.log(
-      `Dog number ${index + 1} is ${
-        dog >= 3 ? 'an adult' : 'a puppy'
-      }, and is ${dog} years old`
-    )
-  );
-}
+//   dogs.forEach((dog, index) =>
+//     console.log(
+//       `Dog number ${index + 1} is ${
+//         dog >= 3 ? 'an adult' : 'a puppy'
+//       }, and is ${dog} years old`
+//     )
+//   );
+// }
 
-// ! Coding Challenge 2 & 3
-// const calcAverageHumanAge = ages =>
-//   ages
-//     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
-//     .filter(age => age >= 18)
-//     .reduce((sum, age, i, arr) => sum + age / arr.length, 0);
+// // ! Coding Challenge 2 & 3
+// // const calcAverageHumanAge = ages =>
+// //   ages
+// //     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+// //     .filter(age => age >= 18)
+// //     .reduce((sum, age, i, arr) => sum + age / arr.length, 0);
 
-// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
-// console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+// // console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// // console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
 
-// find Loops over array and retrieve first element from the array that satisfies the condition
-// console.log(movements.find(mov => mov < 0)); // -400
+// // find Loops over array and retrieve first element from the array that satisfies the condition
+// // console.log(movements.find(mov => mov < 0)); // -400
 
-// console.log(movements.findIndex(val => val === 3000)); // 3
-// // findIndex returns the index of element if exists and -1 if not
+// // console.log(movements.findIndex(val => val === 3000)); // 3
+// // // findIndex returns the index of element if exists and -1 if not
 
-// // Some is similar to includes method but some can work with comparisons along with equality
-// console.log(movements.some(mov => mov > 1500)); // true
+// // // Some is similar to includes method but some can work with comparisons along with equality
+// // console.log(movements.some(mov => mov > 1500)); // true
 
-// // every like some but it returns true if all elements satisfies the condition
-// console.log(movements.every(mov => mov > 0)); // false
+// // // every like some but it returns true if all elements satisfies the condition
+// // console.log(movements.every(mov => mov > 0)); // false
 
-// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// // const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
 
-// // flat sub-arrays at one level deep into the main array
-// // flat takes one argument which is depth, 1 by default
-// console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
+// // // flat sub-arrays at one level deep into the main array
+// // // flat takes one argument which is depth, 1 by default
+// // console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
 
-// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// // const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
 
-// console.log(arrDeep.flat(2)); // [1, 2, 3, 4, 5, 6, 7, 8]
+// // console.log(arrDeep.flat(2)); // [1, 2, 3, 4, 5, 6, 7, 8]
 
-// Sort mutates original array
-// Sort methods does sorting based on strings, it converts all values to strings then sort them
-// To sort anything we have to give compare callback function
-const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort()); // ['Adam', 'Jonas', 'Martha', 'Zach']
-console.log(owners); // ['Adam', 'Jonas', 'Martha', 'Zach']
+// // Sort mutates original array
+// // Sort methods does sorting based on strings, it converts all values to strings then sort them
+// // To sort anything we have to give compare callback function
+// const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+// console.log(owners.sort()); // ['Adam', 'Jonas', 'Martha', 'Zach']
+// console.log(owners); // ['Adam', 'Jonas', 'Martha', 'Zach']
 
-// a , b are the current the value and the value after it
-// if we return less than 0 value a will be sorted before b, otherwise if we return positive value b will be sorted before a
+// // a , b are the current the value and the value after it
+// // if we return less than 0 value a will be sorted before b, otherwise if we return positive value b will be sorted before a
 
-console.log(movements); //[200, 450, -400, 3000, -650, -130, 70, 1300]
+// console.log(movements); //[200, 450, -400, 3000, -650, -130, 70, 1300]
 
-// return <0 A,B (Keep order)
-// return >0 B,A (Switch order)
-// movements.sort((a, b) => (a >= b ? 1 : -1));
-movements.sort((a, b) => a - b); // if a is greater than b a +ve is returned o.w a -ve is returned
-// we return 1 if we want to but B before A
-console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+// // return <0 A,B (Keep order)
+// // return >0 B,A (Switch order)
+// // movements.sort((a, b) => (a >= b ? 1 : -1));
+// movements.sort((a, b) => a - b); // if a is greater than b a +ve is returned o.w a -ve is returned
+// // we return 1 if we want to but B before A
+// console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+
+// // More Ways of Creating and Filling Arrays
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+// // Empty arrays + fill method
+// const x = new Array(7);
+// console.log(x);
+// // console.log(x.map(() => 5));
+
+// // fill (value,start index, end index-exclusive)
+// x.fill(1, 3, 5);
+// x.fill(1); // fill all with 1
+// console.log(x);
+
+// // fill works also with arrays similar to slice and splice
+// arr.fill(23, 2, 6); //[1, 2, 23, 23, 23, 23, 7]
+// console.log(arr);
+
+// // if we want to create array like arr above we use Array.from
+// // .from takes length as an object and a callback function with no parameters
+// const y = Array.from({ length: 7 }, () => 1);
+// console.log(y); //[1, 1, 1, 1, 1, 1, 1]
+
+// // to fill it with different values we pass a mapping callback function with index parameter
+// const z = Array.from({ length: 7 }, (_, i) => i + 1);
+// console.log(z);
+
+// // A use case is to convert iterables such as nodelist to an array by passing the iterable
+
+// document.querySelector('.balance-label').addEventListener('click', function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movement-amount'),
+//     el => Number(el.textContent.replace('€', ''))
+//   );
+//   console.log(movementsUI);
+
+//   const movementsUI2 = [...document.querySelectorAll('.movement-amount')];
+//   console.log(movementsUI2);
+// });

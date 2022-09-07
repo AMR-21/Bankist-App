@@ -227,6 +227,3 @@ closeBtn.addEventListener('click', function (e) {
   closeUserInp.value = closePinInp.value = '';
   closeBtn.blur();
 });
-
-currentAccount = account1;
-updateUI();
