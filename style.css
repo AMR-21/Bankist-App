@@ -98,7 +98,6 @@ nav {
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 2.4rem;
-  position: relative;
 }
 
 .balance-label {
@@ -161,27 +160,6 @@ nav {
 
 .mov-withdrawal {
   background-image: linear-gradient(to top left, #e52a5a, #ff585f);
-}
-
-.btn-sort {
-  border: none;
-  text-transform: uppercase;
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
-  height: 3.2rem;
-  padding: 0.8rem;
-  border-radius: 9px;
-  font-family: inherit;
-  color: inherit;
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 0.75px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  transform: translate(25%, 175%);
 }
 
 /* SUMMARY */
