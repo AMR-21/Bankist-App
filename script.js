@@ -72,11 +72,9 @@ const loginBtn = document.querySelector('.login-btn');
 const transferBtn = document.querySelector('.op-transfer-btn');
 const loanBtn = document.querySelector('.op-loan-btn');
 const closeBtn = document.querySelector('.op-close-btn');
-const sortBtn = document.querySelector('.btn-sort');
 
 // App variables
 let currentAccount, timer;
-let sorted = false;
 
 // //////////////////////////////////////////////////////////////////////////
 const accounts = [account1, account2];
@@ -105,9 +103,7 @@ const formatCurrency = (acc, val) =>
 const displayMovements = function (acc = currentAccount) {
   movementsDiv.innerHTML = '';
   const movsFrag = document.createDocumentFragment();
-  const movements = sorted
-    ? acc.movements.slice().sort((a, b) => a - b)
-    : acc.movements;
+  const movements = acc.movements;
 
   movements.forEach((mov, i) => {
     const moveEl = document.createElement('div');
@@ -131,12 +127,6 @@ const displayMovements = function (acc = currentAccount) {
   });
   movementsDiv.appendChild(movsFrag);
 };
-
-sortBtn.addEventListener('click', function (e) {
-  e.preventDefault();
-  sorted = !sorted;
-  displayMovements();
-});
 
 // Balance
 
